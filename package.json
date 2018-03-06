@@ -1,0 +1,20 @@
+{
+  "name": "PnpMailerTool",
+  "version": "1.0.0",
+  "description": "Desktop application to send personalized multiple emails",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": "https://github.com/didiben/mailJSpack",
+  "keywords": "",
+  "author": "Benoît Delaméa",
+  "license": "",
+  "devDependencies": {
+    "electron": "~1.8.2"
+  },
+  "dependencies": {
+    "electron-reload": "^1.2.2",
+    "nodemailer": "^4.6.0"
+  }
+}
