@@ -54,7 +54,7 @@ var mailerTool = function() {
                     to: data[i].address, // list of receivers
                     subject: 'Hello '+ data[i].name, // Subject line
                     text: 'Ton bus est à ' + time, // plain text body
-                    html: '<b>Hello world?</b>' // html body
+                    html: document.getElementById('htmlBody').value // html body
                 };
 
                 transporter.sendMail(mailOptions, (error, info) => {

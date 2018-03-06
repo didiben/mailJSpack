@@ -1,20 +1,26 @@
 {
-  "name": "PnpMailerTool",
-  "version": "1.0.0",
-  "description": "Desktop application to send personalized multiple emails",
-  "main": "main.js",
-  "scripts": {
-    "start": "electron ."
-  },
-  "repository": "https://github.com/didiben/mailJSpack",
-  "keywords": "",
-  "author": "Benoît Delaméa",
-  "license": "",
-  "devDependencies": {
-    "electron": "~1.8.2"
-  },
-  "dependencies": {
-    "electron-reload": "^1.2.2",
-    "nodemailer": "^4.6.0"
-  }
+    "name": "PnpMailerTool",
+    "version": "1.0.0",
+    "description": "Desktop application to send personalized multiple emails",
+    "main": "main.js",
+    "scripts": {
+        "elec": "electron .",
+        "glup": "gulp",
+        "start": "npm run elec | npm run glup"
+    },
+    "repository": "https://github.com/didiben/mailJSpack",
+    "keywords": "",
+    "author": "Benoît Delaméa",
+    "license": "",
+    "devDependencies": {
+        "concurrently": "^3.5.1",
+        "electron": "~1.8.2",
+        "gulp": "^3.9.1",
+        "gulp-sass": "^3.1.0",
+        "mocha": "^5.0.2"
+    },
+    "dependencies": {
+        "electron-reload": "^1.2.2",
+        "nodemailer": "^4.6.0"
+    }
 }
