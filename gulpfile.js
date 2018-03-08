@@ -1,8 +1,8 @@
 var gulp = require('gulp');
 var sass = require('gulp-sass');
 
-var sassPath = './*.scss';
-var cssPath = './';
+var sassPath = '*.scss';
+var cssPath = '';
 
 gulp.task('sass', function() {
 	return gulp.src(sassPath)
@@ -15,5 +15,5 @@ gulp.task('watch', ['sass'], function() {
 });
 
 gulp.task('default', ['watch'], function() {
-	
+
 });

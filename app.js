@@ -6,13 +6,25 @@ var mailerTool = function() {
 
     console.log('############# LAUNCHED');
 
-    dataTreat(document.getElementById('inputEmails').value, document.getElementById('inputNames').value, document.getElementById('inputTime').value);
+    checkFormValidity();
+
+    function checkFormValidity() {
+        var forms = document.getElementsByClassName('needs-validation');
+        var validation = Array.prototype.filter.call(forms, function(form) {
+            if (form.checkValidity() === false) {
+                event.preventDefault();
+                event.stopPropagation();
+            } else {
+                dataTreat(document.getElementById('inputEmails').value, document.getElementById('inputNames').value, document.getElementById('inputTime').value);
+            }
+            form.classList.add('was-validated');
+        }, false);
+    }
 
     function dataTreat(addresses, names, time) {
         var count = 0;
         count = addresses.split(';').length; // -1 to have the correct ';' count, here it's just the number of people
         var data = new Array();
-
         console.log(count + ' entries');
         console.log('### Proceeding entries');
         for (var i = 0; i < count; i++) {
@@ -38,32 +50,42 @@ var mailerTool = function() {
     function sendMail(data, time) {
         nodemailer.createTestAccount((err, account) => {
             let transporter = nodemailer.createTransport({
-                host: 'smtp.gmail.com',
-                port: 465,
-                secure: true,
+                host: 'smtp.office365.com',
+                port: 587,
+                secure: false,
                 auth: {
-                    user: 'darkben78@gmail.com',
-                    pass: 'thibaultlachambre'
+                    user: 'lucas.lion.12@neoma-bs.com',
+                    pass: 'Lucas59'
                 }
             });
 
             console.log('### Sending mails');
             for (var i = 0; i < data.length; i++) {
+
+                var htmlSubject = 'Ton horaire de navette pour ce soir';
+                var htmlBody = '<p>Salut à toi ' + data[i].name + ' !</p><p>La navette qui t\’a été attribuée au shotgun est celle de <strong>' + time + '</strong></p><p>Ce bus magique t\'emmènera vers une toute nouvelle salle pour la SAT BDE x JE.</p><p>On t\’attend <span style="font-size: 25px">15 minutes</span> avant le départ de ta navette pour toujours plus de kiffe.</p><p>A ce soir !</p><img src="cid:azerty123" alt=""><br>';
+
                 let mailOptions = {
-                    from: '"BenDelam" <darkben78@gmail.com>', // sender address
+                    from: '"Plug\'N\'Play" <lucas.lion.12@neoma-bs.com>', // sender address
                     to: data[i].address, // list of receivers
-                    subject: 'Hello '+ data[i].name, // Subject line
-                    text: 'Ton bus est à ' + time, // plain text body
-                    html: document.getElementById('htmlBody').value // html body
+                    subject: htmlSubject, // Subject line
+                    // subject: document.getElementById('htmlSubject').value,
+                    // html: document.getElementById('htmlBody').value
+                    html: htmlBody, // html body
+                    attachments: [{
+                        filename: 'image.png',
+                        path: './imgs/image.png',
+                        cid: 'azerty123' //same cid value as in the html img src
+                    }]
                 };
 
                 transporter.sendMail(mailOptions, (error, info) => {
                     if (error) {
                         return console.log(error);
                     } else {
-                        console.log('Mail n°' + (i + 1) + ' pour ' + data[i].name + ' envoyé !');
+                        return console.log('Mail n°' + (i + 1) + ' pour ' + data[i].name + ' envoyé !');
                         if (i == data.length -1) {
-                            console.log('############# DONE');
+                            return console.log('############# DONE');
                         }
                     }
                 });
