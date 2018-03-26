@@ -4,15 +4,14 @@
     <meta charset="utf-8">
     <meta name="Benoit DELAMEA" content="Mailer PnP"/>
 
-    <title>PnP Mailer Tool</title>
-
-    <!-- Scripts Frameworks-->
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>mailJSpack</title>
 
     <!-- Scripts -->
     <script src="./app.js"></script>
+
+    <!-- Scripts Frameworks-->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
     <!-- CSS files -->
     <link rel="stylesheet" href="index.css" />
@@ -27,43 +26,191 @@
     </div>
     <br>
     <div class="container-fluid">
-        <form class="col-sm-8 offset-sm-2 needs-validation">
-            <div class="form-group">
-                <label for="inputEmails">Liste adresses mail</label>
-                <input type="text" class="form-control" id="inputEmails" aria-describedby="emailHelp" placeholder="test@test.edu.emlyon.com" value="bdelamea@hotmail.fr;bdelamea@hotmail.fr;bdelamea@hotmail.fr;bdelamea@hotmail.fr;bdelamea@hotmail.fr" required>
-                <div class="invalid-feedback">
-                    Pas de liste d'emails ou mauvais format.
+        <div class="form-group row col-sm-6 offset-sm-3 text-center">
+            <label for="navettesNumber" class="col-sms-8 col-form-label">Nombre de navettes &nbsp &nbsp</label>
+            <select class="col-sm-1" onchange="whatDisplay()" id="navettesNumber">
+                <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option>
+            </select>
+        </div>
+        <form class="col-sm-12 needs-validation">
+            <div class="form-row">
+                <div class="col-sm-6 subform" id="subform1" style="padding-left:3%;padding-right:3%;margin-left:-10px;margin-right:10px;">
+                    <h5>Navette 1</h5>
+                    <div class="form-group">
+                        <label for="inputEmails">Liste des adresses mail</label>
+                        <input type="text" class="form-control subinput1" id="inputEmails1" aria-describedby="emailHelp" placeholder="test@test.edu.emlyon.com" value="bdelamea@hotmail.fr;bdelamea@hotmail.fr;bdelamea@hotmail.fr;bdelamea@hotmail.fr;bdelamea@hotmail.fr">
+                        <div class="invalid-feedback">
+                            Pas de liste d'emails ou mauvais format.
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputNames">Liste des prénoms</label>
+                        <input type="text" class="form-control subinput1" id="inputNames1" placeholder="Test" value="Début_23h;Test2_23h;Milieu_23h;Test4_23h;Fin_23h">
+                        <div class="invalid-feedback">
+                            Pas de liste des prénoms ou mauvais format.
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputTime">Heure de la première navette</label>
+                        <input type="text" class="form-control subinput1" id="inputTime1" placeholder="21h" value="23h">
+                        <div class="invalid-feedback">
+                            Pas d'heure indiquée.
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 subform d-none" id="subform2" style="padding-left:3%;padding-right:3%;margin-left:10px;margin-right:-10px;">
+                    <h5>Navette 2</h5>
+                    <div class="form-group">
+                        <label for="inputEmails">Liste des adresses mail</label>
+                        <input type="text" class="form-control subinput2" id="inputEmails2" aria-describedby="emailHelp" placeholder="test@test.edu.emlyon.com" value="bdelamea@hotmail.fr;bdelamea@hotmail.fr;bdelamea@hotmail.fr;bdelamea@hotmail.fr;bdelamea@hotmail.fr">
+                        <div class="invalid-feedback">
+                            Pas de liste d'emails ou mauvais format.
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputNames">Liste des prénoms</label>
+                        <input type="text" class="form-control subinput2" id="inputNames2" placeholder="Test" value="Début_00h;Test2_00h;Milieu_00h;Test4_00h;Fin_00h">
+                        <div class="invalid-feedback">
+                            Pas de liste des prénoms ou mauvais format.
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputTime">Heure de la deuxième navette</label>
+                        <input type="text" class="form-control subinput2" id="inputTime2" placeholder="22h" value="00h">
+                        <div class="invalid-feedback">
+                            Pas d'heure indiquée.
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="form-group">
-                <label for="inputNames">Liste des prénoms</label>
-                <input type="text" class="form-control" id="inputNames" placeholder="Test" value="Test1;Test2;Test3;Test4;Test5" required>
-                <div class="invalid-feedback">
-                    Pas de liste des prénoms ou mauvais format.
+            <br>
+            <div class="form-row">
+                <div class="col-sm-6 subform d-none" id="subform3" style="padding-left:3%;padding-right:3%;margin-left:-10px;margin-right:10px;">
+                    <h5>Navette 3</h5>
+                    <div class="form-group">
+                        <label for="inputEmails">Liste des adresses mail</label>
+                        <input type="text" class="form-control subinput3" id="inputEmails3" aria-describedby="emailHelp" placeholder="test@test.edu.emlyon.com">
+                        <div class="invalid-feedback">
+                            Pas de liste d'emails ou mauvais format.
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputNames">Liste des prénoms</label>
+                        <input type="text" class="form-control subinput3" id="inputNames3" placeholder="Test">
+                        <div class="invalid-feedback">
+                            Pas de liste des prénoms ou mauvais format.
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputTime">Heure de la troisième navette</label>
+                        <input type="text" class="form-control subinput3" id="inputTime3" placeholder="23h">
+                        <div class="invalid-feedback">
+                            Pas d'heure indiquée.
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="col-sm-6 subform d-none" id="subform4" style="padding-left:3%;padding-right:3%;margin-left:10px;margin-right:-10px;">
+                    <h5>Navette 4</h5>
+                    <div class="form-group">
+                        <label for="inputEmails">Liste des adresses mail</label>
+                        <input type="text" class="form-control subinput4" id="inputEmails4" aria-describedby="emailHelp" placeholder="test@test.edu.emlyon.com">
+                        <div class="invalid-feedback">
+                            Pas de liste d'emails ou mauvais format.
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputNames">Liste des prénoms</label>
+                        <input type="text" class="form-control subinput4" id="inputNames4" placeholder="Test">
+                        <div class="invalid-feedback">
+                            Pas de liste des prénoms ou mauvais format.
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputTime">Heure de la quatrième navette</label>
+                        <input type="text" class="form-control subinput4" id="inputTime4" placeholder="00h">
+                        <div class="invalid-feedback">
+                            Pas d'heure indiquée.
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="form-group">
-                <label for="inputTime">Heure de la navette</label>
-                <input type="text" class="form-control" id="inputTime" placeholder="22h" value="22h" required>
-                <div class="invalid-feedback">
-                    Pas d'heure indiquée.
+            <br>
+            <div class="form-row">
+                <div class="col-sm-6 subform d-none" id="subform5" style="padding-left:3%;padding-right:3%;margin-left:-10px;margin-right:10px;">
+                    <h5>Navette 5</h5>
+                    <div class="form-group">
+                        <label for="inputEmails">Liste des adresses mail</label>
+                        <input type="text" class="form-control subinput5" id="inputEmails5" aria-describedby="emailHelp" placeholder="test@test.edu.emlyon.com">
+                        <div class="invalid-feedback">
+                            Pas de liste d'emails ou mauvais format.
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputNames">Liste des prénoms</label>
+                        <input type="text" class="form-control subinput5" id="inputNames5" placeholder="Test">
+                        <div class="invalid-feedback">
+                            Pas de liste des prénoms ou mauvais format.
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputTime">Heure de la cinquième navette</label>
+                        <input type="text" class="form-control subinput5" id="inputTime5" placeholder="1h">
+                        <div class="invalid-feedback">
+                            Pas d'heure indiquée.
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="col-sm-6 subform d-none" id="subform6" style="padding-left:3%;padding-right:3%;margin-left:10px;margin-right:-10px;">
+                    <h5>Navette 6</h5>
+                    <div class="form-group">
+                        <label for="inputEmails">Liste des adresses mail</label>
+                        <input type="text" class="form-control subinput6" id="inputEmails6" aria-describedby="emailHelp" placeholder="test@test.edu.emlyon.com">
+                        <div class="invalid-feedback">
+                            Pas de liste d'emails ou mauvais format.
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputNames">Liste des prénoms</label>
+                        <input type="text" class="form-control subinput6" id="inputNames6" placeholder="Test">
+                        <div class="invalid-feedback">
+                            Pas de liste des prénoms ou mauvais format.
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputTime">Heure de la sixième navette</label>
+                        <input type="text" class="form-control subinput6" id="inputTime6" placeholder="2h">
+                        <div class="invalid-feedback">
+                            Pas d'heure indiquée.
+                        </div>
+                    </div>
                 </div>
             </div>
-            <!-- <div class="form-group">
-                <label for="inputHtml">Objet du mail</label>
-                <input type="text" class="form-control" id="htmlSubject" placeholder="Hello guys" required>
-                <div class="invalid-feedback">
-                    Pas d'objet de mail indiqué.
+            <div id="emailcontent">
+                <div class="form-group row col-sm-10 offset-sm-1">
+                    <label class="col-sm-2 col-form-label text-right">Sujet</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="htmlSubject" placeholder="OSS110SAT !!" value="Salut à toi § 😃" required>
+                        <div class="invalid-feedback">
+                            Pas d'objet de mail indiqué.
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row col-sm-10 offset-sm-1">
+                    <label class="col-sm-2 col-form-label text-right">Corps</label>
+                    <div class="col-sm-10">
+                        <textarea type="text" class="form-control" id="htmlBody" placeholder="<p>Cher étudiant, ...</p>" value="<p>Bonjour §, tu es dans le bus de ° ! Profite bien 😊</p>" required></textarea>
+                        <div class="invalid-feedback">
+                            Pas de corps de mail indiqué.
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="form-group">
-                <label for="inputHtml">Mail en HTML</label>
-                <textarea class="form-control" cols="500" rows="3" id="htmlBody" placeholder="<p>Salut ! Pour la SAT de ce soir ton car est celui de...</p>" required></textarea>
-                <div class="invalid-feedback">
-                    Pas de corps de mail indiqué.
-                </div>
-            </div> -->
-            <input type="button" class="btn btn-primary" id="submitNow" value="Envoyer" onclick="mailerTool()">
+            <p class="text-center">Dans le sujet du mail, remplacer le nom de la personne par un §. Dans le corps du mail, écrire le texte en html (uniquement la partie à l'intérieure de body) en remplaçant le nom de la personne par un §, et l'heure de la navette par un £.</p>
+            <div class="text-center" style="margin-top:30px;margin-bottom:50px;">
+                <input type="button" class="btn btn-primary" id="submitNow" value="Envoyer" onclick="mailerTool()">
+            </div>
         </form>
     </div>
 </body>

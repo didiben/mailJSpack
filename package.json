@@ -6,7 +6,9 @@
     "scripts": {
         "elec": "electron .",
         "glup": "gulp",
-        "start": "npm run elec | npm run glup"
+        "start": "npm run elec | npm run glup",
+        "pack": "electron-builder --dir",
+        "dist": "electron-builder"
     },
     "repository": "https://github.com/didiben/mailJSpack",
     "keywords": "",
@@ -15,12 +17,16 @@
     "devDependencies": {
         "concurrently": "^3.5.1",
         "electron": "~1.8.2",
+        "electron-builder": "^20.4.1",
         "gulp": "^3.9.1",
         "gulp-sass": "^3.1.0",
         "mocha": "^5.0.2"
     },
     "dependencies": {
+        "bootstrap": "^3.3.7",
         "electron-reload": "^1.2.2",
+        "jquery": "^3.3.1",
+        "node-inspector": "github:node-inspector/node-inspector",
         "nodemailer": "^4.6.0"
     }
 }
